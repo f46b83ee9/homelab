@@ -27,6 +27,7 @@ spec:
           - --rfc2136-tsig-secret-alg=$(RFC2136_SECRET_ALG)
           - --rfc2136-tsig-keyname=$(RFC2136_KEYNAME)
           - --rfc2136-tsig-axfr
+          - --traefik-disable-legacy
         
         env:
           - name: RFC2136_KEYNAME
