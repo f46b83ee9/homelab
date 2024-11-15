@@ -35,7 +35,9 @@ spec:
         persistence:
           defaultClassReplicaCount: 2
           defaultDataLocality: best-effort
-            
+        
+        preUpgradeChecker:
+          jobEnabled: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: longhorn-system
