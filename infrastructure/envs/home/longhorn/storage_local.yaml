@@ -1,0 +1,16 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: longhorn-local
+provisioner: driver.longhorn.io
+parameters:
+  dataEngine: v1
+  dataLocality: strict-local
+  disableRevisionCounter: "true"
+  fsType: ext4
+  numberOfReplicas: "1"
+  unmapMarkSnapChainRemoved: ignored
+volumeBindingMode: Immediate
+reclaimPolicy: Delete
+allowVolumeExpansion: true

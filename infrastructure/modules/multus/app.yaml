@@ -1,0 +1,35 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: multus
+  namespace: argocd
+spec:
+  project: infrastructure 
+
+  ignoreDifferences:
+  - group: argoproj.io
+    jsonPointers:
+    - /status
+    kind: Application
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+
+  source:
+    chart: rke2-multus
+    repoURL: https://rke2-charts.rancher.io
+    targetRevision: v4.1.300
+    helm:
+      valuesObject:
+        config:
+          fullnameOverride: multus
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kube-system

@@ -1,0 +1,33 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd
+  labels:
+    app.kubernetes.io/managed-by: argocd-autopilot
+    app.kubernetes.io/name: root
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  ignoreDifferences:
+  - group: argoproj.io
+    jsonPointers:
+    - /status
+    kind: Application
+
+syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+
+  source:
+    repoURL: https://github.com/f46b83ee9/homelab.git
+    path: projects/home
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
