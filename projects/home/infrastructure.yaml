@@ -33,7 +33,7 @@ spec:
       repoURL: https://github.com/f46b83ee9/homelab.git
       revision: HEAD
       directories:
-      - path: apps/envs/home/*
+      - path: infrastructure/envs/home/*
   template:
     metadata:
       name: '{{.path.basename}}-addon'
