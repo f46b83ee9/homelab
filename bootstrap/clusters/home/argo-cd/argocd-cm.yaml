@@ -6,10 +6,10 @@ data:
   timeout.reconciliation: 15s
   application.instanceLabelKey: argocd.argoproj.io/instance
   resource.exclusions: |
-  - apiGroups:
-      - cilium.io
-    kinds:
-      - CiliumIdentity
-    clusters:
-      - "*"
+    - apiGroups:
+        - cilium.io
+      kinds:
+        - CiliumIdentity
+      clusters:
+        - "*"
   url: https://argocd.vfd.lan

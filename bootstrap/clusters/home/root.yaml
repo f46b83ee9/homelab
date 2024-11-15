@@ -18,7 +18,7 @@ spec:
     - /status
     kind: Application
 
-syncPolicy:
+  syncPolicy:
     automated:
       allowEmpty: true
       prune: true
