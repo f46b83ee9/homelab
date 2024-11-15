@@ -5,8 +5,8 @@ metadata:
 data:
   timeout.reconciliation: 15s
   application.instanceLabelKey: argocd.argoproj.io/instance
-  resource.exclusions: | 
-    apiGroups:
+  resource.exclusions: |
+  - apiGroups:
       - cilium.io
     kinds:
       - CiliumIdentity
