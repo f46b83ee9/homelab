@@ -7,9 +7,9 @@ resources:
   - argocd-ingress.yaml
 
 patches:
-  - argocd-cm.yaml
-  - argocd-cmd-params-cm.yaml
-  - argocd-server-service.yaml
+  - path: argocd-cm.yaml
+  - path: argocd-cmd-params-cm.yaml
+  - path: argocd-server-service.yaml
   - target:
       group: rbac.authorization.k8s.io
       version: v1
