@@ -1,8 +1,13 @@
 ---
-apiVersion: v1 
-kind: Service  
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: traefik
-  namespace: traefik
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: traefik.vfd.lan
+  namespace: argocd
+spec:
+  source:
+    helm:
+      valuesObject:
+        service:
+          annotations:
+            external-dns.alpha.kubernetes.io/hostname: traefik.vfd.lan
