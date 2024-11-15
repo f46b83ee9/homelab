@@ -8,4 +8,4 @@ resources:
   - cifs_credentials.yaml
 
 patches:
-  - overlay.yaml
+  - path: overlay.yaml
