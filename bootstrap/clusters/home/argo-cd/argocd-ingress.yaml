@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: argocd-server
   namespace: argocd
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: argocd.vfd.lan
 spec:
   entryPoints:
     - websecure
