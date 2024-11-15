@@ -4,3 +4,6 @@ kind: Kustomization
 
 resources:
   - ../../../modules/traefik
+
+patches:
+  - path: overlay.yaml
