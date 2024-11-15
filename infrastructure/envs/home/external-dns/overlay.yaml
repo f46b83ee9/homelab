@@ -14,6 +14,11 @@ spec:
         domainFilters: 
           - vfd.lan
 
+        sources:
+          - service
+          - ingress
+          - traefik-proxy
+
         extraArgs: 
           - --rfc2136-host=192.168.10.230
           - --rfc2136-port=5353
