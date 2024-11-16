@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "enabledManagers": [
+    "argocd",
+    "regex"
+  ],
+  "argocd": {
+    "fileMatch": [
+      "app\\.yaml$"
+    ]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "datasourceTemplate": "github-tags",
+      "fileMatch": [
+        "^bootstrap/clusters/.*/argo-cd/kustomization\\.yaml$"
+      ],
+      "matchStrings": [
+        "https://raw\\.githubusercontent\\.com/argoproj/argo-cd/v(?<currentValue>\\S+)/manifests/install\\.yaml"
+      ],
+      "depNameTemplate": "argoproj/argo-cd",
+      "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    }
+  ]
+}
