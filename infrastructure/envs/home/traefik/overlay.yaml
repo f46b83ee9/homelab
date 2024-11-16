@@ -11,3 +11,10 @@ spec:
         service:
           annotations:
             external-dns.alpha.kubernetes.io/hostname: traefik.vfd.lan
+      ingressRoute:
+        dashboard:
+          enabled: true
+          matchRule: Host(`traefik.vfd.lan`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+        healthcheck:
+          enabled: true
+          matchRule: Host(`traefik.vfd.lan`) && PathPrefix(`/ping`)
