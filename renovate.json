@@ -5,7 +5,7 @@
   ],
   "enabledManagers": [
     "argocd",
-    "regex"
+    "custom.regex"
   ],
   "argocd": {
     "fileMatch": [
