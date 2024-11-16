@@ -3,23 +3,38 @@
   "extends": [
     "config:recommended"
   ],
-  "dependencyDashboard": true,
-  "enabledManagers": ["argocd"],
+  "enabledManagers": [
+    "argocd",
+    "regex"
+  ],
   "argocd": {
-    "fileMatch": ["app\\.yaml$"]
+    "fileMatch": [
+      "app\\.yaml$"
+    ]
   },
   "customManagers": [
     {
       "customType": "regex",
       "datasourceTemplate": "github-tags",
       "fileMatch": [
-        "^bootstrap/clusters/(.*)/argo-cd/kustomization\\.yaml$"
+        "^bootstrap/clusters/\\.*/argo-cd/kustomization\\.yaml$"
       ],
       "matchStrings": [
         "https://raw\\.githubusercontent\\.com/argoproj/argo-cd/v(?<currentValue>\\S+)/manifests/install\\.yaml"
       ],
       "depNameTemplate": "argoproj/argo-cd",
       "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
     }
   ]
 }
