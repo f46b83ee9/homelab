@@ -10,17 +10,17 @@ spec:
       valuesObject:
         service:
           annotations:
-            external-dns.alpha.kubernetes.io/hostname: traefik.vfd.lan
+            external-dns.alpha.kubernetes.io/hostname: ingress.vfd.lan
         ingressRoute:
           dashboard:
             enabled: true
-            matchRule: Host(`traefik-mgmt.vfd.lan`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+            matchRule: Host(`traefik.vfd.lan`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
             annotations:
-              external-dns.alpha.kubernetes.io/target: traefik.vfd.lan
+              external-dns.alpha.kubernetes.io/target: ingress.vfd.lan
             entryPoints: ["websecure"]
           healthcheck:
             enabled: true
-            matchRule: Host(`traefik-mgmt.vfd.lan`) && PathPrefix(`/ping`)
+            matchRule: Host(`traefik.vfd.lan`) && PathPrefix(`/ping`)
             annotations:
-              external-dns.alpha.kubernetes.io/target: traefik.vfd.lan
+              external-dns.alpha.kubernetes.io/target: ingress.vfd.lan
             entryPoints: ["websecure"]
